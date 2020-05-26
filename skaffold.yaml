@@ -6,7 +6,7 @@ deploy:
       - ./infra/k8s/*
 build:
   # local:
-  #   push: false
+    # push: false
   googleCloudBuild:
     projectId: get-tix-dev
   artifacts:
