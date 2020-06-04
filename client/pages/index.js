@@ -1,5 +1,4 @@
 import buildClient from '../api/build-client';
-import build from 'next/dist/build';
 
 const LandingPage = ({ currentUser }) => {
 
