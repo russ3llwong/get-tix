@@ -14,12 +14,12 @@ spec:
     spec:
       containers:
         - name: client
-          image: us.gcr.io/get-tix-dev/client
+          image: russellwong97/client
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: slient-srv
+  name: client-srv
 spec:
   selector:
     app: client

@@ -20,6 +20,10 @@ app.use(
     })
 );
 
+app.get('/test', (req, res) => {
+    res.send("Successful.")
+})
+
 app.use(currentUserRouter);
 app.use(signInRouter);
 app.use(signOutRouter);
