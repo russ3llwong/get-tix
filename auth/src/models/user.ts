@@ -13,7 +13,7 @@ interface UserModel extends mongoose.Model<UserDoc> {
     build(attrs: UserAttrs): UserDoc;
 }
 
-// to describe properties of a User Document
+// to describe properties of a User Document, one instance of data
 interface UserDoc extends mongoose.Document {
     email: string;
     password: string;
@@ -29,7 +29,7 @@ const userSchema = new mongoose.Schema({
         required: true
     }
 }, {
-    toJSON: {
+    toJSON: { // to standardize database response data
         transform(doc, ret) {
             ret.id = ret._id;
             delete ret._id;
@@ -49,6 +49,7 @@ userSchema.pre('save', async function(done) {
     done();
 });
 
+// to do some type-checking
 userSchema.statics.build = (attrs: UserAttrs) => {
     return new User(attrs);
 };

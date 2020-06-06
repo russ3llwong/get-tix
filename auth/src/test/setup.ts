@@ -14,6 +14,7 @@ declare global {
 let mongo: any;
 beforeAll(async () => {
     process.env.JWT_KEY = "test-key";
+    process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
 
     mongo = new MongoMemoryServer();
     const mongoUri = await mongo.getUri();
@@ -44,7 +45,8 @@ global.signup = async () => {
     const response = await request(app)
         .post('/api/users/signup')
         .send({
-            email, password
+            email, 
+            password
         })
         .expect(201);
 

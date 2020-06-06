@@ -3,9 +3,10 @@ import { app } from '../../app';
 
 it('responds with details of current user', async () => {
     const cookie = await global.signup();
+    // console.log(cookie)
 
     const response = await request(app)
-        .post('/api/users/currentuser')
+        .get('/api/users/currentuser')
         .set('Cookie', cookie)
         .send()
         .expect(200);
