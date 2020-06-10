@@ -10,10 +10,23 @@ const start = async () => {
     }
     if (!process.env.MONGO_URI) {
       throw new Error('MONGO_URI env var must be defined.')
-  }
+    }
+    if (!process.env.NATS_CLIENT_ID) {
+      throw new Error('NATS_CLIENT_ID env var must be defined.')
+    }
+    if (!process.env.NATS_URL) {
+      throw new Error('NATS_URL env var must be defined.')
+    }
+    if (!process.env.NATS_CLUSTER_ID) {
+      throw new Error('NATS_CLUSTER_ID env var must be defined.')
+    }
+
 
     try {
-      await natsWrapper.connect('ticketing', 'clientId', 'http://nats-srv:4222');
+      await natsWrapper.connect(
+        process.env.NATS_CLIENT_ID, 
+        process.env.NATS_URL, 
+        process.env.NATS_CLUSTER_ID);
       natsWrapper.client.on('close', () => {
         console.log('NATS connection closed!');
         process.exit();
