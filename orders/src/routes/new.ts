@@ -15,4 +15,4 @@ router.post('/api/orders', requireAuth, [
     res.send({});
 })
 
-export { router as newOrderRouter }; 
+export { router as newOrderRouter };  
