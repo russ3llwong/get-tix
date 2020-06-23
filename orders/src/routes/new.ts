@@ -51,6 +51,7 @@ async (req: Request, res: Response) => {
     new OrderCreatedPublisher(natsWrapper.client).publish({
         id: order.id,
         status: order.status,
+        version: order.version,
         userId: order.userId,
         expiresAt: order.expiresAt.toISOString(),
         ticket: {
