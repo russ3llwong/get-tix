@@ -18,7 +18,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@get-tix/common": "^1.0.7",
+    "@get-tix/common": "^1.0.8",
     "@types/bull": "^3.14.0",
     "bull": "^3.14.0",
     "ts-node-dev": "^1.0.0-pre.44",
