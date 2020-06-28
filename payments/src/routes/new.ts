@@ -8,6 +8,7 @@ import {
     NotAuthorizedError,
     OrderStatus
 } from '@get-tix/common';
+import { stripe } from '../stripe';
 import { Order } from '../models/order';
 
 const router = express.Router();
@@ -34,8 +35,13 @@ router.post('/api/payments',
             throw new BadRequestError("Order has already been canceled.");
         }
 
-        
+        await stripe.charges.create({
+            currency: 'usd',
+            amount: order.price * 100,
+            source: token
+        });
 
+        res.status(201).send({ success: true });
 });
 
 export { router as createChargeRouter };
