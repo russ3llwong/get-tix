@@ -14,7 +14,8 @@ declare global {
 
 jest.mock('../nats-wrapper'); // fake NATS client for tests
 
-process.env.STRIPE_KEY = 'sk_test_cz9ButVjoCVOb4hkLTAs0ynd00DemjQwz5';
+// test key token
+process.env.STRIPE_KEY = 'to_be_added_locally';
 
 let mongo: any;
 beforeAll(async () => {
